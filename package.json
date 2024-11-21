@@ -1,5 +1,5 @@
 {
-	"name": "@tabor/comment-avatars",
+	"name": "@tabor/comment-avatars-block",
 	"version": "1.0.0",
 	"description": "A WordPress block to add commenters' avatars and the comment count to each post.",
 	"author": {

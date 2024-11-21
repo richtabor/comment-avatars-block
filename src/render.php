@@ -2,7 +2,7 @@
 /**
  * Render template for the Comment Avatars block.
  *
- * @package tabor/comment-avatars
+ * @package tabor/comment-avatars-block
  */
 
 $count              = absint( get_comments_number() );
