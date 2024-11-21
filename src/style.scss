@@ -1,0 +1,191 @@
+.wp-block-tabor-comment-avatars {
+	$root: &;
+
+	&__link {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		text-decoration: none;
+		max-height: 32px;
+	}
+
+	&__avatar-wrapper {
+		height: 28px;
+		width: 28px;
+		background: #80808030; // Fallback.
+		background: color-mix(in srgb, currentColor 15%, transparent);
+		display: block;
+		border-radius: 100% 100% 8px 100%;
+		position: relative;
+		justify-content: center;
+		align-items: center;
+		padding: 2px;
+		transition: background var(--wp--custom--transition--duration, 200ms) ease-out;
+
+		&:hover img {
+			opacity: 1;
+		}
+	}
+
+	&__avatar {
+		display: flex;
+		margin: 0;
+		line-height: 0;
+		height: 100%;
+		width: 100%;
+		border-radius: 100%;
+		align-items: center;
+		justify-content: center;
+		z-index: 1;
+
+		img {
+			@extend #{$root}__avatar;
+		}
+	}
+
+	&__avatars {
+		display: grid;
+		gap: 4px;
+		grid-template-columns: auto 18px;
+		grid-template-rows: 1fr auto;
+		position: relative;
+		text-align: center;
+		top: 6px;
+		transition: all 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+		will-change: transform;
+
+		span {
+			border-radius: 100%;
+			display: flex;
+			height: 24px;
+			position: relative;
+			width: 24px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				border-radius: 100%;
+			}
+
+			&:nth-child(1) { grid-column: 1; justify-self: end; }
+			&:nth-child(2) {
+				align-self: end;
+				grid-column: 2;
+				justify-self: start;
+				left: -5px;
+				top: 4px;
+				transform: scale(0.7);
+			}
+			&:nth-child(3) {
+				align-self: flex-start;
+				grid-column: 1 / span 2;
+				justify-self: center;
+				left: 1px;
+				top: -9px;
+				transform: scale(0.5);
+			}
+		}
+	}
+
+	&__plus {
+		background-color: currentColor;
+		display: block;
+		height: 1.5px;
+		position: relative;
+		width: 11.5px;
+
+		&::after {
+			background-color: inherit;
+			content: '';
+			height: 11.5px;
+			left: 5px;
+			position: absolute;
+			top: -5px;
+			transition: inherit;
+			width: 1.5px;
+		}
+	}
+
+	// Hover states
+	&__link:hover {
+		#{$root}__avatar-wrapper {
+			background: #80808050; // Fallback.
+			background: color-mix(in srgb, currentColor 25%, transparent);
+			color: currentColor;
+		}
+
+		#{$root}__avatars {
+			scale: 1.05;
+
+			span {
+				@for $i from 1 through 3 {
+					&:nth-child(#{$i}) {
+						transition-delay: $i * 15ms - 15ms;
+						animation: tabor-comment-avatars-float#{if($i == 1, "", $i)} 6s ease-in-out infinite ($i * 15ms - 15ms);
+					}
+				}
+			}
+		}
+	}
+
+	// Comment count modifiers
+	&.has-1-comments #{$root}__avatars {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		top: 0;
+
+		span {
+			&:nth-child(1) {
+				height: 28px;
+				width: 28px;
+			}
+			animation: none !important;
+		}
+	}
+
+	&.has-2-comments #{$root}__avatars {
+		left: 0;
+		top: 0;
+
+		span {
+			&:nth-child(1) { top: -2px; }
+			&:nth-child(2) {
+				left: -7px;
+				top: 8px;
+			}
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-tabor-comment-avatars__avatars {
+		scale: 1 !important;
+		span { animation: none !important; }
+	}
+}
+
+@keyframes tabor-comment-avatars-float {
+	0%, 3% { transform: translate(0, 0); }
+	25% { transform: translate(-1px, -1px); }
+	50% { transform: translate(1px, 1px); }
+	75% { transform: translate(-1px, 1px); }
+	100% { transform: translate(0, 0); }
+}
+
+@keyframes tabor-comment-avatars-float2 {
+	0%, 3% { transform: scale(0.7) translate(0, 0); }
+	20% { transform: scale(0.7) translate(0.5px, 0.5px); }
+	45% { transform: scale(0.7) translate(-0.5px, -0.5px); }
+	75% { transform: scale(0.7) translate(0.5px, -0.5px); }
+	100% { transform: scale(0.7) translate(0, 0); }
+}
+
+@keyframes tabor-comment-avatars-float3 {
+	0%, 3% { transform: scale(0.5) translate(0, 0); }
+	15% { transform: scale(0.5) translate(-1px, -2px); }
+	40% { transform: scale(0.5) translate(-2px, 1px); }
+	60% { transform: scale(0.5) translate(-1px, 2px); }
+	80% { transform: scale(0.5) translate(-2px, 1px); }
+	100% { transform: scale(0.5) translate(0, 0); }
+}

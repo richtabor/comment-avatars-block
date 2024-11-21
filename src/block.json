@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tabor/comment-avatars",
+	"version": "1.0.0",
+	"title": "Comment Avatars",
+	"category": "theme",
+	"description": "Avatars of commenters alongside the comment count.",
+	"supports": {
+		"html": false,
+		"color": {
+			"text": true,
+			"background": false
+		}
+	},
+	"textdomain": "comment-avatars-block",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
