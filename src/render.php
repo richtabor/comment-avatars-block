@@ -54,7 +54,7 @@ $text_class = isset( $block_attributes['textColor'] ) ? 'has-' . $block_attribut
 	<a href="<?php echo esc_url( get_comments_link() ); ?>"
 		class="wp-block-tabor-comment-avatars__link">
 		<?php if ( ! $has_avatar ) : ?>
-			<span class="wp-block-tabor-comment-avatars__avatar-wrapper"
+			<span class="wp-block-tabor-comment-avatars__empty"
 				style="<?php echo esc_attr( $background_style ); ?>"
 				aria-hidden="true">
 				<span class="wp-block-tabor-comment-avatars__avatar">

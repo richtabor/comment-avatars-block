@@ -2,25 +2,25 @@
 	$root: &;
 
 	&__link {
-		display: flex;
 		align-items: center;
+		display: flex;
 		gap: 8px;
-		text-decoration: none;
 		max-height: 32px;
+		text-decoration: none;
 	}
 
-	&__avatar-wrapper {
-		height: 28px;
-		width: 28px;
+	&__empty {
+		align-items: center;
 		background: #80808030; // Fallback.
 		background: color-mix(in srgb, currentColor 15%, transparent);
-		display: block;
 		border-radius: 100% 100% 8px 100%;
-		position: relative;
+		display: block;
+		height: 28px;
 		justify-content: center;
-		align-items: center;
 		padding: 2px;
+		position: relative;
 		transition: background var(--wp--custom--transition--duration, 200ms) ease-out;
+		width: 28px;
 
 		&:hover img {
 			opacity: 1;
@@ -108,7 +108,7 @@
 
 	// Hover states
 	&__link:hover {
-		#{$root}__avatar-wrapper {
+		#{$root}__empty {
 			background: #80808050; // Fallback.
 			background: color-mix(in srgb, currentColor 25%, transparent);
 			color: currentColor;
@@ -117,14 +117,14 @@
 		#{$root}__avatars {
 			scale: 1.05;
 
-			span {
-				@for $i from 1 through 3 {
-					&:nth-child(#{$i}) {
-						transition-delay: $i * 15ms - 15ms;
-						animation: tabor-comment-avatars-float#{if($i == 1, "", $i)} 6s ease-in-out infinite ($i * 15ms - 15ms);
+				span {
+					@for $i from 1 through 3 {
+						&:nth-child(#{$i}) {
+							transition-delay: $i * 15ms - 15ms;
+							animation: tabor-comment-avatars-float#{if($i == 1, "", $i)} 6s ease-in-out infinite ($i * 15ms - 15ms);
+						}
 					}
 				}
-			}
 		}
 	}
 
