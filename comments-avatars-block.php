@@ -49,7 +49,7 @@ add_action( 'init', 'tabor_comment_avatars_block_init' );
  *
  * @return string HTML markup for the comment avatars.
  */
-function tabor_comment_avatars_get_avatars(): string {
+function tabor_comment_avatars_block_get_avatars(): string {
 	$post_id = absint( get_the_ID() );
 
 	$args = array(
@@ -89,7 +89,7 @@ function tabor_comment_avatars_get_avatars(): string {
  * @global int $post Current post ID.
  * @return string|void Comment count text or void if no comments.
  */
-function tabor_comment_avatars_get_comment_count(): ?string {
+function tabor_comment_avatars_block_get_comment_count(): ?string {
 	$comment_count = absint( get_comments_number() );
 
 	if ( 0 === $comment_count ) {
@@ -118,7 +118,7 @@ function tabor_comment_avatars_get_comment_count(): ?string {
  *
  * @return string HTML markup for the most recent comment avatar.
  */
-function tabor_comment_avatars_get_last_avatar(): string {
+function tabor_comment_avatars_block_get_last_avatar(): string {
 	$post_id = absint( get_the_ID() );
 
 	$args = array(

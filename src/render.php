@@ -6,7 +6,7 @@
  */
 
 $count              = absint( get_comments_number() );
-$has_avatar         = ! empty( tabor_comment_avatars_get_last_avatar() );
+$has_avatar         = ! empty( tabor_comment_avatars_block_get_last_avatar() );
 $wrapper_attributes = get_block_wrapper_attributes(
 	array(
 		'class' => sprintf( 'has-%d-comments', $count ),
@@ -45,7 +45,7 @@ $link_aria = $has_avatar ?
 			<span class="wp-block-tabor-comment-avatars__avatars"
 				role="group"
 				aria-label="<?php echo esc_attr( $link_aria ); ?>">
-				<?php echo wp_kses_post( tabor_comment_avatars_get_avatars() ); ?>
+				<?php echo wp_kses_post( tabor_comment_avatars_block_get_avatars() ); ?>
 			</span>
 		<?php endif; ?>
 		<?php if ( $has_avatar ) : ?>
