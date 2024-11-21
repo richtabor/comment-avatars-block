@@ -3,7 +3,7 @@
 
 	&__link {
 		align-items: center;
-		display: flex;
+		display: inline-flex;
 		gap: 8px;
 		max-height: 32px;
 		text-decoration: none;
@@ -14,16 +14,28 @@
 		background: #80808030; // Fallback.
 		background: color-mix(in srgb, currentColor 15%, transparent);
 		border-radius: 100% 100% 8px 100%;
-		display: block;
-		height: 28px;
+		display: flex;
+		height: 32px;
 		justify-content: center;
-		padding: 2px;
 		position: relative;
 		transition: background var(--wp--custom--transition--duration, 200ms) ease-out;
-		width: 28px;
+		width: 32px;
 
-		&:hover img {
-			opacity: 1;
+		&::before,
+		&::after {
+			background-color: currentColor;
+			content: '';
+			position: absolute;
+		}
+
+		&::before {
+			height: 1.5px;
+			width: 11.5px;
+		}
+
+		&::after {
+			height: 11.5px;
+			width: 1.5px;
 		}
 	}
 
@@ -87,31 +99,11 @@
 		}
 	}
 
-	&__plus {
-		background-color: currentColor;
-		display: block;
-		height: 1.5px;
-		position: relative;
-		width: 11.5px;
-
-		&::after {
-			background-color: inherit;
-			content: '';
-			height: 11.5px;
-			left: 5px;
-			position: absolute;
-			top: -5px;
-			transition: inherit;
-			width: 1.5px;
-		}
-	}
-
 	// Hover states
 	&__link:hover {
 		#{$root}__empty {
 			background: #80808050; // Fallback.
 			background: color-mix(in srgb, currentColor 25%, transparent);
-			color: currentColor;
 		}
 
 		#{$root}__avatars {
