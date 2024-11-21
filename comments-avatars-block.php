@@ -131,11 +131,14 @@ function tabor_comment_avatars_block_get_last_avatar(): string {
 
 	$comments = get_comments( $args );
 
-	if ( ! empty( $comments ) ) {
-		$comment = $comments[0];
-		$avatar = get_avatar( $comment->comment_author_email, 96 );
-		return is_wp_error( $avatar ) ? '' : wp_kses_post( $avatar );
+	if ( empty( $comments ) ) {
+		return '';
 	}
 
-	return '';
+	$avatar = get_avatar( $comments[0]->comment_author_email, 96 );
+	if ( is_wp_error( $avatar ) ) {
+		return '';
+	}
+
+	return wp_kses_post( $avatar );
 }
