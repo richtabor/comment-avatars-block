@@ -103,7 +103,7 @@
 	&__link:hover {
 		#{$root}__empty {
 			background: #80808050; // Fallback.
-			background: color-mix(in srgb, currentColor 25%, transparent);
+			background: color-mix(in srgb, currentColor 22%, transparent);
 		}
 
 		#{$root}__avatars {
