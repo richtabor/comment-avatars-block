@@ -46,7 +46,7 @@ $link_aria = $has_comments ?
 			<span class="wp-block-tabor-comment-avatars__avatars"
 				role="group"
 				aria-label="<?php echo esc_attr( $link_aria ); ?>">
-				<?php echo wp_kses_post( tabor_comment_avatars_block_get_avatars() ); ?>
+				<?php echo wp_kses_post( taborcommentavatarsblock_get_avatars() ); ?>
 			</span>
 		<?php endif; ?>
 		<?php if ( $has_comments ) : ?>

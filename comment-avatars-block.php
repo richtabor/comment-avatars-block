@@ -2,12 +2,12 @@
 /**
  * Plugin Name:       Comment Avatars Block
  * Description:       A WordPress block to add commenters' avatars and the comment count to each post.
- * Plugin URI:        https://rich.blog/comment-avatars-block
+ * Plugin URI:        https://rich.blog/blocks
  * Requires at least: 6.4
  * Requires PHP:      7.0
  * Version:           1.0.0
  * Author:            Rich Tabor
- * Author URI:        https://rich.blog/blocks
+ * Author URI:        https://rich.blog
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       comment-avatars-block
@@ -32,12 +32,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  * @return void
  */
-function tabor_comment_avatars_block_init(): void {
+function taborcommentavatarsblock_init(): void {
 
 	register_block_type( __DIR__ . '/build' );
 
 }
-add_action( 'init', 'tabor_comment_avatars_block_init' );
+add_action( 'init', 'taborcommentavatarsblock_init' );
 
 /**
  * Gets the avatars of the latest commenters.
@@ -49,7 +49,7 @@ add_action( 'init', 'tabor_comment_avatars_block_init' );
  *
  * @return string HTML markup for the comment avatars.
  */
-function tabor_comment_avatars_block_get_avatars(): string {
+function taborcommentavatarsblock_get_avatars(): string {
 	$post_id = absint( get_the_ID() );
 
 	$args = array(
@@ -89,7 +89,7 @@ function tabor_comment_avatars_block_get_avatars(): string {
  * @global int $post Current post ID.
  * @return string|void Comment count text or void if no comments.
  */
-function tabor_comment_avatars_block_get_comment_count(): ?string {
+function taborcommentavatarsblock_get_comment_count(): ?string {
 	$comment_count = absint( get_comments_number() );
 
 	if ( 0 === $comment_count ) {
@@ -118,7 +118,7 @@ function tabor_comment_avatars_block_get_comment_count(): ?string {
  *
  * @return string HTML markup for the most recent comment avatar.
  */
-function tabor_comment_avatars_block_get_last_avatar(): string {
+function taborcommentavatarsblock_get_last_avatar(): string {
 	$post_id = absint( get_the_ID() );
 
 	$args = array(
