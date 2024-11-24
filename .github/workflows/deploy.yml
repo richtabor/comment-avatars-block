@@ -40,4 +40,13 @@ jobs:
         REMOTE_DIR: ${{ secrets.REMOTE_DIR }}
         METHOD: sftp
         PORT: 22
-        ARGS: --exclude=README.md --exclude-glob=.git*/** --exclude-glob=.git** --exclude-glob=node_modules/** --exclude=package.json --exclude=composer.json --exclude=package-lock.json --exclude=.wp-env.json --exclude=.wp-env-generator.json
+        ARGS: >-
+          --exclude=README.md
+          --exclude-glob=.git*/**
+          --exclude-glob=.git**
+          --exclude-glob=node_modules/**
+          --exclude=package.json
+          --exclude=composer.json
+          --exclude=package-lock.json
+          --exclude=.wp-env.json
+          --exclude=.wp-env-generator.json
